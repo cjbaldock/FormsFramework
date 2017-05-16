@@ -1,0 +1,9 @@
+<!--
+ - Created by chris.baldock on 13/5/17.
+ -->
+
+<design:component label="Form - Driver (Button)">
+    <design:attribute name="driverKey" label="Driver Key" description="Used to link a form element to a Driver" />
+    <design:attribute name="label" label="label" description="The display label" />
+    <design:attribute name="showDebug" label="Show Debug?" description="Mark as checked if you wish to display debug mode" />
+</design:component>

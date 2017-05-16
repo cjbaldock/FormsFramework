@@ -1,0 +1,11 @@
+<!--
+ - Created by chris.baldock on 13/5/17.
+ -->
+
+<design:component label="Form - Text Box">
+    <design:attribute name="driverKey" label="Driver Key" description="Used to link a form element to a Driver" />
+    <design:attribute name="objectKey" label="Object API Name" description="The linked Object" />
+    <design:attribute name="fieldKey" label="Field API Name" description="The linked Field" />
+    <design:attribute name="label" label="Label" description="The display label" />
+    <design:attribute name="isRequired" label="Is Required?" description="Mark as checked if form element is required" />
+</design:component>

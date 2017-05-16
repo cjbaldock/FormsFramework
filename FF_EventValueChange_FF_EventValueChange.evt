@@ -1,0 +1,11 @@
+<!--
+ - Created by chris.baldock on 13/5/17.
+ -->
+
+<aura:event type="APPLICATION" description="FF_EventValueChange">
+    <aura:attribute name="driverKey" type="String" />
+    <aura:attribute name="objectKey" type="String" />
+    <aura:attribute name="fieldKey" type="String" />
+    <aura:attribute name="value" type="String"/>
+    <aura:attribute name="inputIsValid" type="Boolean"/>
+</aura:event>

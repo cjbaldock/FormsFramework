@@ -1,0 +1,8 @@
+<!--
+ - Created by chris.baldock on 13/5/17.
+ -->
+
+<aura:event type="APPLICATION" description="FF_EventRegisterFormElements">
+    <aura:attribute name="driverKey" type="String" />
+    <aura:attribute name="callback" type="Aura.Action" />
+</aura:event>

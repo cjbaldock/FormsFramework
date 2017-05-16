@@ -1,0 +1,6 @@
+<!--
+ - Created by chris.baldock on 13/5/17.
+ -->
+
+<aura:event type="APPLICATION" description="FF_EventBroadcastFormState">
+</aura:event>

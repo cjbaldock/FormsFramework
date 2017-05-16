@@ -1,0 +1,7 @@
+<!--
+ - Created by chris.baldock on 14/5/17.
+ -->
+
+<aura:event type="APPLICATION" description="FF_EventShowError">
+    <aura:attribute type="String" name="driverKey" />
+</aura:event>

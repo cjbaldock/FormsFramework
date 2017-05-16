@@ -1,0 +1,53 @@
+<!--
+ - Created by chris.baldock on 13/5/17.
+ -->
+
+<aura:component description="FF_UserInputTextBox" implements="flexipage:availableForAllPageTypes">
+
+    <aura:attribute type="String" name="driverKey" default="D1"/>
+    <aura:attribute type="String" name="objectKey" default=""/>
+    <aura:attribute type="String" name="fieldKey" default=""/>
+    <aura:attribute type="String" name="value" default="" access="public" />
+    <aura:attribute type="String" name="label" default="My Label"/>
+    <aura:attribute type="String" name="placeholderText" default="My Placeholder Text"/>
+    <aura:attribute type="String" name="errorMessage" default="This field is required"/>
+    <aura:attribute type="Boolean" name="isRequired" default="false"/>
+    <aura:attribute type="Boolean" name="isValid" default="true"/>
+    <aura:attribute type="Boolean" name="isDisabled" default="false"/>
+    <aura:attribute type="Boolean" name="showError" default="false"/>
+
+    <!-- Handler for OnLoad event -->
+    <aura:handler name="init" value="{!this}" action="{!c.onInit}"/>
+    <!-- Show error as commanded by driver-->
+    <aura:handler event="c:FF_EventShowError" action="{!c.showError}"/>
+    <!-- Register component to driver-->
+    <aura:handler event="c:FF_EventRegisterFormElements" action="{!c.registerSelf}"/>
+    <!-- Broadcast value change to driver -->
+    <aura:registerEvent name="valueChange" type="c:FF_EventValueChange"/>
+
+    <div class="{! (and(not(v.isValid), v.showError) ? 'slds-form-element slds-has-error' : 'slds-form-element') }">
+        <label class="slds-form-element__label" for="text-input">
+            <aura:if isTrue="{!v.isRequired}">
+                <abbr class="slds-required" title="required">*</abbr>
+            </aura:if>
+            {!v.label}
+        </label>
+        <div class="slds-form-element__control">
+            <input
+                    aura:id="textInput"
+                    aria-describedby="error-message"
+                    id="text-input"
+                    value="{!v.value}"
+                    required="{!v.isRequired}"
+                    disabled="{!v.isDisabled}"
+                    class="slds-input"
+                    placeholder="{!v.placeholderText}"
+                    onkeyup="{!c.valueChangeEvent}"
+            />
+        </div>
+        <div id="error-message" class="{!'slds-form-element__help ' +  (and(not(v.isValid), v.showError) ? 'slds-show' : 'slds-hide') }">
+                {!v.errorMessage}
+        </div>
+    </div>
+
+</aura:component>

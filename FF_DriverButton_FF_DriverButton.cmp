@@ -1,0 +1,35 @@
+<!--
+ - Created by chris.baldock on 13/5/17.
+ -->
+
+<aura:component description="FF_DriverButton" implements="flexipage:availableForAllPageTypes">
+    <aura:attribute type="String" name="driverKey" default="D1"/>
+    <aura:attribute type="String" name="recordId" default=""/>
+    <aura:attribute type="String" name="label" default="Submit"/>
+    <aura:attribute type="String" name="style" default="brand" />
+    <aura:attribute type="Object" name="formState" default=""/>
+    <aura:attribute type="String" name="formStatePrettyPrint" default=""/>
+    <aura:attribute type="Boolean" name="showDebug" default="false" />
+    <aura:attribute type="Boolean" name="formIsValid" default="true" />
+
+    <!-- Handler for OnLoad event -->
+    <aura:handler name="init" value="{!this}" action="{!c.onInit}"/>
+
+    <!-- Handle value changes for all linked user input component -->
+    <aura:handler event="c:FF_EventValueChange" action="{!c.handleValueChangeEvent}"/>
+    <!-- Broadcast show error event to all linked user input components -->
+    <aura:registerEvent name="showError" type="c:FF_EventShowError"/>
+    <!-- Broadcast registration event to build form state -->
+    <aura:registerEvent name="registerFormElements" type="c:FF_EventRegisterFormElements"/>
+
+    <!-- just to apply styling -->
+    <div>
+        <button class="{!'slds-button ' + (v.style == 'neutral' ? 'slds-button--neutral' : 'slds-button--brand')}" onclick="{!c.submitForm}">
+                {!v.label}
+        </button>
+        <pre class="{!if(v.showDebug, 'slds-show', 'slds-hide') }">
+            <div class="slds-text-heading--small">Debug:</div><br />
+            <strong>FormState: </strong> {!v.formStatePrettyPrint}<br />
+        </pre>
+    </div>
+</aura:component>
